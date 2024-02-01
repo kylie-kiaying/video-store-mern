@@ -8,13 +8,13 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-app.get('/', (request, response) => {
+app.get("/", (request, response) => {
   console.log(request);
-  return response.status(234).send('Hello World!');
+  return response.status(234).send("Hello World!");
 });
 
 // Route for Save a new Video
-app.post('/videos', async (request, response) => {
+app.post("/videos", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -37,8 +37,8 @@ app.post('/videos', async (request, response) => {
   } catch (error) {
     console.log(error.message);
     response.status(500).send({
-        message: error.message,
-      });
+      message: error.message,
+    });
   }
 });
 
@@ -48,13 +48,13 @@ app.get("/videos", async (request, response) => {
     const videos = await Video.find({});
     return response.status(200).json({
       count: videos.length,
-      data: videos
+      data: videos,
     });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({
-        message: error.message,
-      });
+      message: error.message,
+    });
   }
 });
 
@@ -68,8 +68,41 @@ app.get("/videos/:id", async (request, response) => {
   } catch (error) {
     console.log(error.message);
     response.status(500).send({
-        message: error.message,
+      message: error.message,
+    });
+  }
+});
+
+// Route for Update a video by id
+app.put("/videos/:id", async (request, response) => {
+  try {
+    if (
+      !request.body.title ||
+      !request.body.director ||
+      !request.body.releaseYear
+    ) {
+      return response.status(400).send({
+        message: "Required field missing",
       });
+    }
+    const { id } = request.params;
+
+    const result = await Video.findByIdAndUpdate(id, request.body);
+
+    if (!result) {
+      return response.status(404).json({
+        message: "Video not found",
+      });
+    }
+
+    return response.status(200).send({
+      message: "Video updated successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({
+      message: error.message,
+    });
   }
 });
 
@@ -82,5 +115,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.error(error); 
+    console.error(error);
   });
