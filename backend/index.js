@@ -42,6 +42,22 @@ app.post('/videos', async (request, response) => {
   }
 });
 
+// Route for Get all videos from database
+app.get("/videos", async (request, response) => {
+  try {
+    const videos = await Video.find({});
+    return response.status(200).json({
+      count: videos.length,
+      data: videos
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({
+        message: error.message,
+      });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
