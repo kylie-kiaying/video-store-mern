@@ -23,41 +23,62 @@ A comprehensive full-stack application built with the MERN stack, facilitating C
 
 ### Prerequisites
 
+Ensure you have the following installed:
 - Node.js
-- MongoDB Connection URL
+- A MongoDB instance running. You can use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for a free cloud-based MongoDB service.
 
 1. Clone the Repository
+Start by cloning the project repository from GitHub to your local machine. Open your terminal and run the following command:
 
 ```bash
 git clone https://github.com/kylie-kiaying/video-store-mern
 cd video-store-mern
 ```
 
-2. Install dependencies for both backend and frontend:
-cd into frontend and backend folder to install dependencies  
+2. Install Dependencies
 
-```bash
-npm install
-```
-
-3. Get MongoDB Database URL
-Create a config.js or .env file in the backend folder
-
-```
-export const PORT = 5555;
-
-export const mongoDBURL = {INSERT_MONGO_URL}
-```
-
-4. Run backend server
+- For the Backend:
+Navigate to the backend directory and install the necessary NPM packages:
 
 ```bash
 cd backend
+npm install
+```
+
+- For the Frontend:
+Open a new terminal tab or window, navigate to the frontend directory from the project root, and install the dependencies:
+
+```bash
+cd ../frontend  
+npm install
+```
+
+
+3. Set Up MongoDB Database URL
+You need to provide a connection URL to your MongoDB database. This can be done by creating a config.js or .env file in the backend directory.  
+In the file, add the following lines:
+
+```bash
+export const PORT = 5555; //Or any other port of choice
+MONGODB_URL=your_mongodb_connection_string_here
+```
+
+In the MONGODB_URL, replace your_mongodb_connection_string_here with your actual MongoDB connection URL and add videos-collection in the link:  
+ie.  ...mongodb.net/videos-collection?retryWrites=true&w=majority'
+
+4. Run Backend Server
+With the dependencies installed and the database URL set up, you can now run the backend server. Ensure you are in the backend directory and execute:
+
+```bash
 npm run dev
 ```
 
-5. Launch frontend application
-```
-cd frontend
+5. Launch Frontend application
+Finally, start the frontend application. Open a new terminal tab or window, navigate to the frontend directory if you're not already there, and run:
+
+```bash
 npm run dev
 ```
+
+6. Accessing the Application
+With both the backend and frontend running, you can now access the Video Store Application through your web browser. By default, the frontend should be available at [http://localhost:5173](http://localhost:5173)
