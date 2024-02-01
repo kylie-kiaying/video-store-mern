@@ -58,6 +58,21 @@ app.get("/videos", async (request, response) => {
   }
 });
 
+// Route for Get a single video by id
+app.get("/videos/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const video = await Video.findById(id);
+    return response.status(200).json(video);
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({
+        message: error.message,
+      });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
