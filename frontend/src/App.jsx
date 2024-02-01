@@ -1,10 +1,10 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Home from './components/Home.jsx';
-import CreateVideos from './components/CreateVideos.jsx';
-import DeleteVideo from './components/DeleteVideo.jsx';
-import EditVideo from './components/EditVideo.jsx';
-import ShowVideo from './components/ShowVideo.jsx';
+import Home from './pages/Home.jsx';
+import CreateVideos from './pages/CreateVideos.jsx';
+import DeleteVideo from './pages/DeleteVideo.jsx';
+import EditVideo from './pages/EditVideo.jsx';
+import ShowVideo from './pages/ShowVideo.jsx';
 
 const App = () => {
   return (
