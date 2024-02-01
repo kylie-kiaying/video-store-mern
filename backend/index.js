@@ -1,13 +1,16 @@
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
-import { Video } from "./models/videoModel.js";
 import videosRoutes from "./routes/videosRoute.js";
+import cors from "cors";
 
 const app = express();
 
-// Middleware
+// Middleware for parsing request body
 app.use(express.json());
+
+// Middleware handling CORS
+app.use(cors());
 
 app.get("/", (request, response) => {
   console.log(request);
