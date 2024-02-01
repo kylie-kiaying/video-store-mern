@@ -1,6 +1,6 @@
 # Video Store Application
 
-A comprehensive full-stack application built with the MERN stack, facilitating CRUD operations for video management. This project showcases backend and frontend development with MongoDB, Express, React, and Node.js, demonstrating robust data management and interactive user interfaces.
+A  full-stack application built with the MERN stack, facilitating CRUD operations for video management. This project showcases backend and frontend development with MongoDB, Express, React, and Node.js.
 
 ## Tech Stack
 
